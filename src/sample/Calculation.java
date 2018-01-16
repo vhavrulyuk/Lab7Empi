@@ -3,6 +3,7 @@ package sample;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.TreeSet;
 
 public class Calculation {
     static Double deltaValue, deltaAlfaValue, deltaBetaValue, alfa, beta;
@@ -65,7 +66,7 @@ public class Calculation {
         return values.size() * sumSquareElements(values) - Math.pow(sumElements(values), 2);
     }
 
-    static void Calculate(String x, String y) {
+    static void LinearCalculate(String x, String y) {
         List<Double> xValues = retriveInputData(x);
         List<Double> yValues = retriveInputData(y);
         Double sumSquareX = sumSquareElements(xValues);
@@ -79,5 +80,19 @@ public class Calculation {
         beta = deltaBetaValue/deltaValue;
     }
 
+    private static TreeSet getSort (List<Double> list){
+        TreeSet set = new TreeSet(list);
+        return set;
+    }
+    public static void fillCorellationTable(String x, String y) {
+        TreeSet<Double> xx = getSort(retriveInputData(x));
+        TreeSet<Double> yy = getSort(retriveInputData(y));
+
+
+    }
+
+    static void regressionCalculate() {
+
+    }
 
 }
