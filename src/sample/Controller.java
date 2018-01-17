@@ -30,6 +30,13 @@ public class Controller implements Initializable {
     private TextField betaUI;
     @FXML
     private Label line;
+    @FXML
+    private TextField correlationUI;
+    @FXML
+    private TextField regressionUI;
+    @FXML
+    private Label cline;
+
     /*0.32 0.31 0.36 0.33 0.40 0.42
         0.43 0.41 0.35 0.38 0.42 0.47*/
     /*0.30 0.29 0.32 0.36 0.37 0.37
@@ -57,8 +64,13 @@ public class Controller implements Initializable {
             alfaUI.setText(setAlfa);
             betaUI.setText(setBeta);
             line.setText(String.format("y = %s + %s*x", setAlfa, setBeta));
-            Calculation.fillCorellationTable(xValues.getText(), yValues.getText());
-
+            Calculation.regressionCalculate(xValues.getText(),yValues.getText());
+            String setrXY = String.format("%.4f", Calculation.rXY);
+            String setrYonX = String.format("%.4f", Calculation.rYonX);
+            String setxEmpMed = String.format("%.4f", Calculation.xEmpMed);
+            correlationUI.setText(setrXY);
+            regressionUI.setText(setrYonX);
+            cline.setText(String.format("y = %s * (x - %s)", setrYonX, setxEmpMed));
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Wrong Input");
